@@ -1,10 +1,10 @@
 #pragma once
 #include "SDFS.h"
 #include "OpenKNX.h"
-#include "common/BlockDevice.h"
+#include "common/FsBlockDevice.h"
 #include <string>
 
-class VirtualBlockDevice : public BlockDevice
+class VirtualBlockDevice : public FsBlockDevice
 {
   public:
     VirtualBlockDevice(std::string id, OpenKNX::Flash::Driver* flash, uint32_t size);
