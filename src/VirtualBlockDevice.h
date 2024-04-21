@@ -1,10 +1,18 @@
 #pragma once
-#include "SDFS.h"
 #include "OpenKNX.h"
-#include "common/FsBlockDevice.h"
+#include "SDFS.h"
+#if (ARDUINO_PICO_MAJOR * 10000 + ARDUINO_PICO_MINOR * 100 + ARDUINO_PICO_REVISION < 30703) && !defined(ARDUINO_PICO_MASTER)
+    #include "common/BlockDevice.h"
+#else
+    #include "common/FsBlockDevice.h"
+#endif
 #include <string>
 
+#if ARDUINO_PICO_MAJOR * 10000 + ARDUINO_PICO_MINOR * 100 + ARDUINO_PICO_REVISION < 30703 && !defined(ARDUINO_PICO_MASTER)
+class VirtualBlockDevice : public BlockDevice
+#else
 class VirtualBlockDevice : public FsBlockDevice
+#endif
 {
   public:
     VirtualBlockDevice(std::string id, OpenKNX::Flash::Driver* flash, uint32_t size);
