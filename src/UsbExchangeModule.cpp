@@ -1,3 +1,4 @@
+#ifndef OPENKNX_USB_EXCHANGE_IGNORE
 #include "UsbExchangeModule.h"
 
 #include "class/msc/msc.h"
@@ -490,3 +491,4 @@ void UsbExchangeModule::showHelp()
 }
 
 UsbExchangeModule openknxUsbExchangeModule;
+#endif

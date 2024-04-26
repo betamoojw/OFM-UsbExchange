@@ -1,3 +1,4 @@
+#ifndef OPENKNX_USB_EXCHANGE_IGNORE
 #include "VirtualBlockDevice.h"
 
 VirtualBlockDevice::VirtualBlockDevice(std::string id, OpenKNX::Flash::Driver* flash, uint32_t size)
@@ -106,3 +107,4 @@ bool VirtualBlockDevice::write(uint32_t sector, uint32_t offset, uint32_t size, 
     _flash->write(pos, (uint8_t*)src, size);
     return true;
 }
+#endif
